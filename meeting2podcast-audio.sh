@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# This script uses ffmpeg to convert a meeting recording (with video) to an audio-only .mp3 file.
+# This script uses ffmpeg to convert a meeting recording (with video) to an audio-only .flac file.
 # Besides it uses some filters to improve the audio quality.
 #
 # It can be executed on native linux or WSL with an already installed ffmpeg.
@@ -45,8 +45,7 @@ for file in "${INPUT_FILES[@]}"; do
   $FFMPEG -i "$file" \
     -vn \
     -af "arnndn=mix=1:model=bd.rnnn" \
-    -acodec libmp3lame \
-    -b:a 320k \
-    "$file.mp3"
+    -acodec flac -b:a 800k \
+    "$file.flac"
 
 done
