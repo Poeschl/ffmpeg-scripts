@@ -43,8 +43,8 @@ fi
 $FFMPEG \
     -i "$AUDIO_IN" \
     -loop 1 -i "$STATIC_IMAGE" \
-    -filter_complex "[0:a]agate=threshold=0.05,showwaves=mode=p2p:s=1280x200:colors=black|white:scale=sqrt:r=20[wave_one]; \
-      [0:a]agate=threshold=0.05,showwaves=mode=p2p:s=1280x200:colors=black|white:scale=sqrt:r=20[wave_two]; \
+    -filter_complex "[0:a]agate=threshold=0.05,showwaves=mode=p2p:s=1280x200:colors=white:scale=sqrt:r=20[wave_one]; \
+      [0:a]agate=threshold=0.05,showwaves=mode=p2p:s=1280x200:colors=white:scale=sqrt:r=20[wave_two]; \
       [wave_one][wave_two]overlay=format=auto:y=-1[combined_waves]; \
       [1:v]scale=1280x720[scaled]; \
       [scaled][combined_waves]overlay=format=auto:y=main_h-overlay_h[output]" \
